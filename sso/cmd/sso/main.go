@@ -25,6 +25,14 @@ func main() {
 	fmt.Println("Logger:", log)
 }
 
+// setupLogger creates a logger based on the given environment.
+//
+// The returned logger always logs to stdout. The log format and level
+// depend on the environment:
+//
+// - local: text format, debug level
+// - dev: JSON format, debug level
+// - prod: JSON format, info level
 func setupLogger(env string) *slog.Logger {
 	var log *slog.Logger
 
