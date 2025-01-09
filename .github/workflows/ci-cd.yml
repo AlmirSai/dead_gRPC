@@ -28,14 +28,6 @@ jobs:
         with:
           go-version: '1.23.4'
 
-      - name: Cache Go modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/go-build
-          key: ${{ runner.os }}-go-${{ hashFiles('**/go.mod') }}
-          restore-keys: |
-            ${{ runner.os }}-go-
-
       - name: Install dependencies
         run: go mod tidy
 
@@ -59,4 +51,4 @@ jobs:
           git commit -m "CI: Auto-update build"
           git push
 
-        continue-on-error: true
+        continue-on-error: false
