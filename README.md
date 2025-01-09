@@ -39,3 +39,5 @@ git push -u origin main
 ```bash
 git fetch
 ```
+
+In the future, please, create a new branch and send a pull request.
