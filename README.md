@@ -1,9 +1,9 @@
-# dead_gRPC
-This is example of realisation auth service on gRPC architecture
+# gRPC tutorial
+Check main link: https://habr.com/ru/articles/774796/
 
-Quick Tutorial
+# Quick Tutorial
 
-How to collaborate with this project:
+## How to collaborate with this project:
 
 1. Clone this repository
 ```bash
