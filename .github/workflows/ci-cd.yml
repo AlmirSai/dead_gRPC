@@ -18,10 +18,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      
-      - name: Set up Example directory
-        uses: actions/checkout@v3
-        run: cd example
 
       - name: Set up Go
         uses: actions/setup-go@v3
