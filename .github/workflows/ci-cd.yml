@@ -1,0 +1,50 @@
+name: Go gRPC CI
+
+on:
+  push:
+    branches:
+      - developer
+      - stage
+  pull_request:
+    branches:
+      - developer
+      - stage
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.23.4'
+
+      - name: Install dependencies
+        run: go mod tidy
+
+      - name: Run golangci-lint
+        run: golangci-lint run
+
+      - name: Run tests
+        run: go test -v ./...
+
+      - name: Build the Go binary
+        run: go build -o auth_service main.go
+
+      - name: Delete build file
+        run: rm -f auth_service
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add .
+          git commit -m "CI: Auto-update build"
+          git push
+
+        continue-on-error: false
